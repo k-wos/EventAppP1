@@ -1,0 +1,49 @@
+form{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: center;
+}
+
+
+label{
+    color: #9747FF;
+    font-size: 18px;
+    margin:5px;
+    
+}
+input{
+    border-radius:10px;
+    height: 2rem;
+    border: 1px solid #c4c4c4;
+    padding: 10px;
+    width:30%;
+    min-width: 200px;
+}
+input[type="password"]{
+    background-color: #c4c4c4;
+    
+}
+input[type="password"]::placeholder{
+    color:#9747FF;
+}
+button{
+    background: #9747FF;
+    border-radius: 40px;
+    border:none;
+    color: #ffffff;
+    width: 20%;
+    height:3rem;
+    margin-top: 15px ;
+    min-width: 100px;
+}
+
+.forgetPasswd{
+    text-align:right;
+    font-size: 10px;
+    text-decoration: underline;
+    color: #9747FF;
+}
+

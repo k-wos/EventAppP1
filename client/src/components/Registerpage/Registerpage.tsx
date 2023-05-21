@@ -12,7 +12,6 @@ function Registerpage() {
       <input type="password" placeholder="***********" />
       <label>Potwierdź hasło</label>
       <input type="password" placeholder="***********" />
-      <p className="forgetPasswd">Zapomniałeś hasła?</p>
       <button>Zarejestruj się</button>
     </form>
   );
