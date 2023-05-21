@@ -6,8 +6,13 @@ function Registerpage() {
     <form action="">
       <label>Nazwa użytkownika</label>
       <input type="text" placeholder="Nazwa użytkownika" />
+      <label>E-mail</label>
+      <input type="text" placeholder="E-mail" />
       <label>Hasło</label>
-      <input type="password" placeholder="Hasło" />
+      <input type="password" placeholder="***********" />
+      <label>Potwierdź hasło</label>
+      <input type="password" placeholder="***********" />
+      <p className="forgetPasswd">Zapomniałeś hasła?</p>
       <button>Zarejestruj się</button>
     </form>
   );

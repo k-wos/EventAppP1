@@ -1,7 +1,12 @@
 import "../LeftSideOfHome/LeftSideOfHome.scss";
 
 function LeftSideOfHome() {
-  return <div>aaa</div>;
+  return (
+    <div className="a">
+      <div>aaa</div>
+      <p>saa</p>
+    </div>
+  );
 }
 
 export default LeftSideOfHome;

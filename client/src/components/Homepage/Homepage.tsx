@@ -5,7 +5,7 @@ import "../Homepage/Homepage.scss";
 function Homepage() {
   return (
     <main>
-      <section>
+      <section className="LeftSide">
         <LeftSideOfHome />
       </section>
       <section>
