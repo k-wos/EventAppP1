@@ -1,4 +1,5 @@
 import React from "react";
+import "../FormSwitchButton/FormSwitchButton.scss";
 
 type FormSwitchButtonProps = {
   activeButton: "login" | "register";
@@ -12,13 +13,13 @@ const FormSwitchButton: React.FC<FormSwitchButtonProps> = ({
   return (
     <div className="form-buttons">
       <button
-        className={activeButton === "login" ? "active" : ""}
+        className={`button ${activeButton === "login" ? "active" : ""}`}
         onClick={() => handleButtonClick("login")}
       >
         Zaloguj się
       </button>
       <button
-        className={activeButton === "register" ? "active" : ""}
+        className={`button ${activeButton === "register" ? "active" : ""}`}
         onClick={() => handleButtonClick("register")}
       >
         Załóż konto

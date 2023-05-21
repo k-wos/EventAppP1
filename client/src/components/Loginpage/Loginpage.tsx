@@ -9,7 +9,7 @@ function Loginpage() {
       <label>Hasło</label>
       <input type="password" placeholder="***********" />
       <p className="forgetPasswd">Zapomniałeś hasła?</p>
-      <button>Zaloguj się</button>
+      <button className="loginButton">Zaloguj się</button>
     </form>
   );
 }

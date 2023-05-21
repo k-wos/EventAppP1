@@ -12,7 +12,7 @@ function Registerpage() {
       <input type="password" placeholder="***********" />
       <label>Potwierdź hasło</label>
       <input type="password" placeholder="***********" />
-      <button>Zarejestruj się</button>
+      <button className="registerButton">Zarejestruj się</button>
     </form>
   );
 }
