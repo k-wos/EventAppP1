@@ -11,8 +11,18 @@ const FormSwitchButton: React.FC<FormSwitchButtonProps> = ({
 }) => {
   return (
     <div className="form-buttons">
-      <button>Zaloguj się</button>
-      <button>Załóż konto</button>
+      <button
+        className={activeButton === "login" ? "active" : ""}
+        onClick={() => handleButtonClick("login")}
+      >
+        Zaloguj się
+      </button>
+      <button
+        className={activeButton === "register" ? "active" : ""}
+        onClick={() => handleButtonClick("register")}
+      >
+        Załóż konto
+      </button>
     </div>
   );
 };
