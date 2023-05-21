@@ -1,6 +1,14 @@
 .a{
 background: rgba(120, 55, 182, 0.12);
-transform: rotate(-13.92deg);
-border-radius:  29% 71% 49% 51% / 0% 69% 31% 100%;
+border-radius: 29% 61% 20% 55% / 0% 50% 18% 36%;
 height: 40rem;
+text-align: center;
+display: flex;
+align-items: center;
+justify-content: center;
+
+}
+.ProjectLogo{
+    width:50%;
+    height: 70%;
 }

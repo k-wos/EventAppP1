@@ -1,10 +1,10 @@
 import "../LeftSideOfHome/LeftSideOfHome.scss";
+import ProjectLogo from "../../Assets/Project.png";
 
 function LeftSideOfHome() {
   return (
     <div className="a">
-      <div>aaa</div>
-      <p>saa</p>
+      <img src={ProjectLogo} className="ProjectLogo" />
     </div>
   );
 }
