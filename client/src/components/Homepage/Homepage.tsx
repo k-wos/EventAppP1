@@ -9,7 +9,7 @@ function Homepage() {
       <section className="LeftSide">
         <LeftSideOfHome />
       </section>
-      <section>
+      <section className="form">
         <FormSwitchButton
           activeButton={"login"}
           handleButtonClick={function (buttonType: "login" | "register"): void {
