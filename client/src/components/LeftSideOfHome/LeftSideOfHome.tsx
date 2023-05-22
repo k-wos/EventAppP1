@@ -4,7 +4,7 @@ import ProjectLogo from "../../Assets/Project.png";
 function LeftSideOfHome() {
   return (
     <div className="a">
-      <img src={ProjectLogo} className="ProjectLogo" />
+      <img src={ProjectLogo} className="ProjectLogo" alt="Planning people" />
     </div>
   );
 }
