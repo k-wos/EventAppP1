@@ -1,49 +1,64 @@
-form{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: flex-start;
-    align-content: center;
+form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: center;
 }
 
-
-label{
-    color: #9747FF;
-    font-size: 18px;
-    margin:5px;
-    
+.loginLabel {
+  color: #9747ff;
+  font-size: 18px;
+  margin: 5px;
 }
-input{
-    border-radius:10px;
-    height: 2rem;
-    border: 1px solid #c4c4c4;
-    padding: 10px;
-    width:30%;
-    min-width: 300px;
+input {
+  border-radius: 10px;
+  height: 2rem;
+  border: 1px solid #c4c4c4;
+  padding: 10px;
+  width: 30%;
+  min-width: 300px;
 }
-input[type="password"]{
-    background-color: #c4c4c4;
-    
+input[type="password"] {
+  background-color: #c4c4c4;
 }
-input[type="password"]::placeholder{
-    color:#9747FF;
+input[type="password"]::placeholder {
+  color: #9747ff;
 }
-.loginButton{
-    background: #9747FF;
-    border-radius: 40px;
-    border:none;
-    color: #ffffff;
-    width: 20%;
-    height:3rem;
-    margin-top: 15px ;
-    min-width: 100px;
-}
-
-.forgetPasswd{
-    text-align:right;
-    font-size: 10px;
-    text-decoration: underline;
-    color: #9747FF;
+.loginButton {
+  cursor: pointer;
+  font-weight: 700;
+  font-family: Helvetica, "sans-serif";
+  transition: all 0.2s;
+  padding: 10px 20px;
+  border-radius: 100px;
+  background: #9747ff;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
 }
 
+.forgetPasswd {
+  text-align: right;
+  font-size: 10px;
+  text-decoration: underline;
+  color: #9747ff;
+}
+
+.loginButton > svg {
+  width: 34px;
+  margin-left: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+.loginButton:hover svg {
+  transform: translateX(5px);
+}
+
+.loginButton:active {
+  transform: scale(0.95);
+}
+.loginButton > span {
+  color: #fff;
+}

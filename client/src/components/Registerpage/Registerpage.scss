@@ -1,42 +1,56 @@
-form{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: flex-start;
-    align-content: center;
+form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: center;
 }
 
+.registerLabel {
+  color: #9747ff;
+  font-size: 18px;
+  margin: 5px;
+}
+input {
+  border-radius: 10px;
+  height: 2rem;
+  border: 1px solid #c4c4c4;
+  padding: 10px;
+  min-width: 300px;
+}
+input[type="password"] {
+  background-color: #c4c4c4;
+}
+input[type="password"]::placeholder {
+  color: #9747ff;
+}
+.registerButton {
+  cursor: pointer;
+  font-weight: 700;
+  font-family: Helvetica, "sans-serif";
+  transition: all 0.2s;
+  padding: 10px 20px;
+  border-radius: 100px;
+  background: #9747ff;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  margin-top: 10px;
+}
+.registerButton > svg {
+  width: 34px;
+  margin-left: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+.registerButton:hover svg {
+  transform: translateX(5px);
+}
 
-label{
-    color: #9747FF;
-    font-size: 18px;
-    margin:5px;
-    
+.registerButton:active {
+  transform: scale(0.95);
 }
-input{
-    border-radius:10px;
-    height: 2rem;
-    border: 1px solid #c4c4c4;
-    padding: 10px;
-    min-width: 300px;
+.registerButton > span {
+  color: #fff;
 }
-input[type="password"]{
-    background-color: #c4c4c4;
-    
-}
-input[type="password"]::placeholder{
-    color:#9747FF;
-}
-.registerButton{
-    background: #9747FF;
-    border-radius: 40px;
-    border:none;
-    color: #ffffff;
-    width: 20%;
-    height:3rem;
-    margin-top: 15px ;
-    min-width: 100px;
-}
-
-
