@@ -16,7 +16,7 @@ const Homepage: React.FC = () => {
 
   return (
     <main className="mainContainer">
-      <Loginpage />
+      <Registerpage />
     </main>
   );
 };

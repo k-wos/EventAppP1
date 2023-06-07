@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "../Loginpage/Loginpage.scss";
+import Registerpage from "../Registerpage/Registerpage";
 
 function Loginpage() {
+  const [showRegisterForm, setShowRegisterForm] = useState(false);
+
+  const handleClick = () => {
+    alert("work");
+  };
   return (
     <form action="">
       <div className="login">
@@ -17,7 +23,9 @@ function Loginpage() {
         </div>
         <div className="group">
           <a>Zapomniałeś hasła?</a>
-          <a>Zarejestruj się</a>
+          <a href="#" onClick={handleClick}>
+            Zarejestruj się
+          </a>
         </div>
       </div>
     </form>
