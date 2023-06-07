@@ -4,11 +4,7 @@ import Registerpage from "./components/Registerpage/Registerpage";
 import Homepage from "./components/Homepage/Homepage";
 
 function App() {
-  return (
-    <main>
-      <Homepage />
-    </main>
-  );
+  return <Homepage />;
 }
 
 export default App;

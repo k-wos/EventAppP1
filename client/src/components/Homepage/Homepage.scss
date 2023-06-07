@@ -2,8 +2,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../../Assets/pexels-pixabay-257092.jpg");
+  background-size: cover;
 }
 section {
   width: 50%;

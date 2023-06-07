@@ -16,16 +16,7 @@ const Homepage: React.FC = () => {
 
   return (
     <main className="mainContainer">
-      <section className="LeftSide">
-        <LeftSideOfHome />
-      </section>
-      <section className="form">
-        <FormSwitchButton
-          activeButton={activeButton}
-          handleButtonClick={handleButtonClick}
-        />
-        {activeButton === "login" ? <Loginpage /> : <Registerpage />}
-      </section>
+      <Loginpage />
     </main>
   );
 };
