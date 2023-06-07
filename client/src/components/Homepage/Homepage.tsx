@@ -15,7 +15,7 @@ const Homepage: React.FC = () => {
   };
 
   return (
-    <main>
+    <main className="mainContainer">
       <section className="LeftSide">
         <LeftSideOfHome />
       </section>
