@@ -1,4 +1,5 @@
 import "dotenv/config";
+import env from "./util/validateEnv";
 import mongoose from "mongoose";
 import express from "express";
 const app = express();
