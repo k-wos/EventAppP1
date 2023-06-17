@@ -1,19 +1,23 @@
 import "dotenv/config";
-import express from "express";
-import EventModel from "./models/event";
+import express, { NextFunction, Request, Response } from "express";
+import eventRoutes from "./routes/events";
 
 const app = express();
 
-app.get("/", async (req, res) => {
-  try {
-    const events = await EventModel.find().exec();
-    res.status(200).json(events);
-  } catch (error) {
-    console.error(error);
-    let errorMassage = "Nieznany błąd";
-    if (error instanceof Error) errorMassage = error.message;
-    res.status(500);
-  }
+app.use(express.json());
+
+app.use("/api/events", eventRoutes);
+
+app.use((req, res, next) => {
+  next(Error("Endpoint not found"));
+});
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+app.use((error: unknown, req: Request, res: Response, next: NextFunction) => {
+  console.error(error);
+  let errorMassage = "Nieznany błąd";
+  if (error instanceof Error) errorMassage = error.message;
+  res.status(500).json({ error: errorMassage });
 });
 
 export default app;
