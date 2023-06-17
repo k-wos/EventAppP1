@@ -1,5 +1,8 @@
 import { RequestHandler } from "express";
 import EventModel from "../models/event";
+import createHttpError from "http-errors";
+import event from "../models/event";
+import mongoose from "mongoose";
 
 export const getEvents: RequestHandler = async (req, res, next) => {
   try {
@@ -14,17 +17,38 @@ export const getEvent: RequestHandler = async (req, res, next) => {
   const eventId = req.params.eventId;
 
   try {
+    if (!mongoose.isValidObjectId(eventId)) {
+      throw createHttpError(400, "Invalid event Id");
+    }
     const event = await EventModel.findById(eventId).exec();
+
+    if (!event) {
+      throw createHttpError(404, "Event not Found");
+    }
+
     res.status(200).json(event);
   } catch (error) {
     next(error);
   }
 };
 
-export const createEvent: RequestHandler = async (req, res, next) => {
+interface CreateEventBody {
+  name: string;
+  description?: string;
+}
+
+export const createEvent: RequestHandler<
+  unknown,
+  unknown,
+  CreateEventBody,
+  unknown
+> = async (req, res, next) => {
   const name = req.body.name;
   const description = req.body.description;
   try {
+    if (!name) {
+      throw createHttpError(400, "Event must have name");
+    }
     const newEvent = await EventModel.create({
       name: name,
       description: description,
