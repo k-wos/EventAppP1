@@ -10,6 +10,17 @@ export const getEvents: RequestHandler = async (req, res, next) => {
   }
 };
 
+export const getEvent: RequestHandler = async (req, res, next) => {
+  const eventId = req.params.eventId;
+
+  try {
+    const event = await EventModel.findById(eventId).exec();
+    res.status(200).json(event);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const createEvent: RequestHandler = async (req, res, next) => {
   const name = req.body.name;
   const description = req.body.description;
