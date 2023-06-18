@@ -59,3 +59,44 @@ export const createEvent: RequestHandler<
     next(error);
   }
 };
+
+interface UpdateEventParams {
+  eventId: string;
+}
+
+interface UpdateEventBody {
+  name?: string;
+  description?: string;
+}
+
+export const updateEvent: RequestHandler<
+  UpdateEventParams,
+  unknown,
+  UpdateEventBody,
+  unknown
+> = async (req, res, next) => {
+  const eventId = req.params.eventId;
+  const newName = req.body.name;
+  const newDrescription = req.body.description;
+  try {
+    if (!mongoose.isValidObjectId(eventId)) {
+      throw createHttpError(400, "Invalid event Id");
+    }
+    if (!newName) {
+      throw createHttpError(400, "Event must have name");
+    }
+
+    const event = await EventModel.findById(eventId).exec();
+    if (!event) {
+      throw createHttpError(404, "Event not Found");
+    }
+    event.name = newName;
+    event.description = newDrescription;
+
+    const updatedEvent = await event.save();
+
+    res.status(200).json(updatedEvent);
+  } catch (error) {
+    next(error);
+  }
+};
