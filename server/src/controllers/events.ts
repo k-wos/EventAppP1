@@ -100,3 +100,24 @@ export const updateEvent: RequestHandler<
     next(error);
   }
 };
+
+export const deleteEvent: RequestHandler = async (req, res, next) => {
+  const eventId = req.params.eventId;
+
+  try {
+    if (!mongoose.isValidObjectId(eventId)) {
+      throw createHttpError(400, "Invalid event Id");
+    }
+    const event = await EventModel.findById(eventId).exec();
+
+    if (!event) {
+      throw createHttpError(404, "Event not found");
+    }
+
+    await event.deleteOne();
+
+    res.sendStatus(204);
+  } catch (error) {
+    next(error);
+  }
+};
