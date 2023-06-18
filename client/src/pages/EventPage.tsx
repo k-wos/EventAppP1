@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { EventModel } from "../models/event";
+import { EventModel as EventModelI } from "../models/event";
+import Event from "../components/Event";
 
 function EventPage() {
-  const [events, setEvents] = useState<EventModel[]>([]);
+  const [events, setEvents] = useState<EventModelI[]>([]);
 
   useEffect(() => {
     async function loadEvents() {
@@ -19,7 +20,13 @@ function EventPage() {
     }
     loadEvents();
   }, []);
-  return <div className="Events">{JSON.stringify(events)}</div>;
+  return (
+    <div className="Events">
+      {events.map((event) => (
+        <Event event={event} key={event._id} />
+      ))}
+    </div>
+  );
 }
 
 export default EventPage;
