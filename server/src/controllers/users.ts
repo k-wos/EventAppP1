@@ -1,5 +1,6 @@
 import { RequestHandler } from "express";
 import createHttpError from "http-errors";
+import UserModel from "../models/user";
 
 interface SignUpBody {
   username?: string;
@@ -20,6 +21,18 @@ export const signUp: RequestHandler<
   try {
     if (!username || !email || !passwardRaw) {
       throw createHttpError(400, "Parameters missing");
+    }
+
+    const existingUsername = await UserModel.findOne({
+      username: username,
+    }).exec();
+    if (existingUsername) {
+      throw createHttpError(409, "Username alredy exists.");
+    }
+
+    const existingEmail = await UserModel.findOne({ email: email }).exec();
+    if (existingEmail) {
+      throw createHttpError(409, "User with this email alreaty exists");
     }
   } catch (error) {
     next(error);
