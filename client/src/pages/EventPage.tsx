@@ -21,7 +21,7 @@ function EventPage() {
     loadEvents();
   }, []);
   return (
-    <div className="Events">
+    <div>
       {events.map((event) => (
         <Event event={event} key={event._id} />
       ))}
