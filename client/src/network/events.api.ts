@@ -17,3 +17,19 @@ export async function fetchEvents(): Promise<EventModel[]> {
   });
   return await response.json();
 }
+
+export interface EventInput {
+  name: string;
+  description?: string;
+}
+
+export async function createEvent(event: EventInput): Promise<EventModel> {
+  const response = await fetchData("/api/events", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(event),
+  });
+  return response.json();
+}

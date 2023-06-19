@@ -4,9 +4,11 @@ import Event from "../components/Event";
 import { Col, Container, Row } from "react-bootstrap";
 import styles from "../styles/EventPage.module.css";
 import * as EventsApi from "../network/events.api";
+import { AddEventDialog } from "../components/AddEventDialog";
 
 function EventPage() {
   const [events, setEvents] = useState<EventModelI[]>([]);
+  const [showAddEventDialog, setShowAddEventDialog] = useState(false);
 
   useEffect(() => {
     async function loadEvents() {
@@ -29,6 +31,7 @@ function EventPage() {
           </Col>
         ))}
       </Row>
+      {showAddEventDialog && <AddEventDialog />}
     </Container>
   );
 }
