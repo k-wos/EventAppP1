@@ -3,13 +3,16 @@ import styles from "../styles/Event.module.css";
 import { EventModel as EventModelI } from "../models/event";
 import { Card } from "react-bootstrap";
 import { formateDate } from "../utils/formateDate";
+import { MdDelete } from "react-icons/md";
+import styleUtil from "../styles/utils.module.css";
 
 interface EventProps {
   event: EventModelI;
+  onDeleteEventClicked: (event: EventModelI) => void;
   className?: string;
 }
 
-function Event({ event, className }: EventProps) {
+function Event({ event, className, onDeleteEventClicked }: EventProps) {
   const {
     name,
     description,
@@ -24,7 +27,16 @@ function Event({ event, className }: EventProps) {
   return (
     <Card className={`${styles.eventCard} ${className}`}>
       <Card.Body className={styles.cardBody}>
-        <Card.Title>{name}</Card.Title>
+        <Card.Title className={styleUtil.flexCenter}>
+          {name}{" "}
+          <MdDelete
+            className="text-muted ms-auto"
+            onClick={(e) => {
+              onDeleteEventClicked(event);
+              e.stopPropagation();
+            }}
+          />
+        </Card.Title>
         <Card.Text className={styles.cardText}>{description}</Card.Text>
       </Card.Body>
       <Card.Footer className="text-muted">{formateDate(createdAt)}</Card.Footer>
