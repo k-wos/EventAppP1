@@ -8,11 +8,17 @@ import styleUtil from "../styles/utils.module.css";
 
 interface EventProps {
   event: EventModelI;
+  onEventClicked: (event: EventModelI) => void;
   onDeleteEventClicked: (event: EventModelI) => void;
   className?: string;
 }
 
-function Event({ event, className, onDeleteEventClicked }: EventProps) {
+function Event({
+  event,
+  className,
+  onDeleteEventClicked,
+  onEventClicked,
+}: EventProps) {
   const {
     name,
     description,
@@ -25,7 +31,10 @@ function Event({ event, className, onDeleteEventClicked }: EventProps) {
   } = event;
 
   return (
-    <Card className={`${styles.eventCard} ${className}`}>
+    <Card
+      className={`${styles.eventCard} ${className}`}
+      onClick={() => onEventClicked(event)}
+    >
       <Card.Body className={styles.cardBody}>
         <Card.Title className={styleUtil.flexCenter}>
           {name}{" "}

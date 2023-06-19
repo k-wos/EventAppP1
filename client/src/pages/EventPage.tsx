@@ -5,12 +5,13 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import styles from "../styles/EventPage.module.css";
 import styleUtils from "../styles/utils.module.css";
 import * as EventsApi from "../network/events.api";
-import { AddEventDialog } from "../components/AddEventDialog";
+import { AddEditEventDialog } from "../components/AddEditEventDialog";
 import { FaPlus } from "react-icons/fa";
 
 function EventPage() {
   const [events, setEvents] = useState<EventModelI[]>([]);
   const [showAddEventDialog, setShowAddEventDialog] = useState(false);
+  const [eventToEdit, setEventToEdit] = useState<EventModelI | null>(null);
 
   useEffect(() => {
     async function loadEvents() {
@@ -53,17 +54,34 @@ function EventPage() {
             <Event
               event={event}
               className={styles.event}
+              onEventClicked={setEventToEdit}
               onDeleteEventClicked={deleteEvent}
             />
           </Col>
         ))}
       </Row>
       {showAddEventDialog && (
-        <AddEventDialog
+        <AddEditEventDialog
           onDismiss={() => setShowAddEventDialog(false)}
           onEventSave={(newEvent) => {
             setEvents([...events, newEvent]);
             setShowAddEventDialog(false);
+          }}
+        />
+      )}
+      {eventToEdit && (
+        <AddEditEventDialog
+          eventToEdit={eventToEdit}
+          onDismiss={() => setEventToEdit(null)}
+          onEventSave={(updatedEvent) => {
+            setEvents(
+              events.map((existingEvent) =>
+                existingEvent._id === updatedEvent._id
+                  ? updatedEvent
+                  : existingEvent
+              )
+            );
+            setEventToEdit(null);
           }}
         />
       )}

@@ -5,24 +5,37 @@ import { useForm } from "react-hook-form";
 import { EventInput } from "../network/events.api";
 import * as EventApi from "../network/events.api";
 
-interface AddEventDialogProps {
+interface AddEditEventDialogProps {
+  eventToEdit?: EventModel;
   onDismiss: () => void;
   onEventSave: (event: EventModel) => void;
 }
 
-export const AddEventDialog = ({
+export const AddEditEventDialog = ({
+  eventToEdit,
   onDismiss,
   onEventSave,
-}: AddEventDialogProps) => {
+}: AddEditEventDialogProps) => {
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<EventInput>();
+  } = useForm<EventInput>({
+    defaultValues: {
+      name: eventToEdit?.name || "",
+      description: eventToEdit?.description || "",
+    },
+  });
 
   async function onSubmit(input: EventInput) {
     try {
-      const eventResponse = await EventApi.createEvent(input);
+      let eventResponse: EventModel;
+      if (eventToEdit) {
+        eventResponse = await EventApi.updateEvent(eventToEdit._id, input);
+      } else {
+        eventResponse = await EventApi.createEvent(input);
+      }
+
       onEventSave(eventResponse);
     } catch (error) {
       console.error(error);
@@ -32,11 +45,13 @@ export const AddEventDialog = ({
   return (
     <Modal show onHide={onDismiss}>
       <Modal.Header closeButton>
-        <Modal.Title>Dodaj Wydarzenie</Modal.Title>
+        <Modal.Title>
+          {eventToEdit ? "Edytuj wydarzenie" : "Dodaj wydarzenie"}
+        </Modal.Title>
       </Modal.Header>
 
       <Modal.Body>
-        <Form id="addEventForm" onSubmit={handleSubmit(onSubmit)}>
+        <Form id="addEditEventForm" onSubmit={handleSubmit(onSubmit)}>
           <Form.Group className="mb-3">
             <Form.Label>Nazwa wydarzenia</Form.Label>
             <Form.Control
@@ -56,8 +71,7 @@ export const AddEventDialog = ({
       </Modal.Body>
 
       <Modal.Footer>
-        <Button type="submit" form="addEventForm" disabled={isSubmitting}>
-          {" "}
+        <Button type="submit" form="addEditEventForm" disabled={isSubmitting}>
           Dodaj
         </Button>
       </Modal.Footer>
