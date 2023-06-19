@@ -1,0 +1,10 @@
+.event {
+    height:200px;
+    min-width: 150px;
+    transition: box-shadow .2s ease-in-out;
+    cursor: pointer;
+}
+
+.event:hover{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}

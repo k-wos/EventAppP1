@@ -1,10 +1,14 @@
 .eventCard {
     background: #4d4aea;
     color:white;
-    width: 10vw;
-    height: 32vh;
+   
+    margin:4px;
 }
 
 .cardText {
-
+    white-space: pre-line;
+}
+.cardBody{
+    overflow: hidden;
+    mask-image: linear-gradient(180deg, #000 60%, transperent);
 }

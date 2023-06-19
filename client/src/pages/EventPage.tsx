@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { EventModel as EventModelI } from "../models/event";
 import Event from "../components/Event";
+import { Col, Container, Row } from "react-bootstrap";
+import styles from "../styles/EventPage.module.css";
 
 function EventPage() {
   const [events, setEvents] = useState<EventModelI[]>([]);
@@ -21,11 +23,15 @@ function EventPage() {
     loadEvents();
   }, []);
   return (
-    <div>
-      {events.map((event) => (
-        <Event event={event} key={event._id} />
-      ))}
-    </div>
+    <Container>
+      <Row xs={1} md={2} x1={3} className="g-4">
+        {events.map((event) => (
+          <Col key={event._id}>
+            <Event event={event} className={styles.event} />
+          </Col>
+        ))}
+      </Row>
+    </Container>
   );
 }
 
