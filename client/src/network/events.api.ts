@@ -33,3 +33,9 @@ export async function createEvent(event: EventInput): Promise<EventModel> {
   });
   return response.json();
 }
+
+export async function deleteEvent(eventId: string) {
+  await fetchData("/api/events/" + eventId, {
+    method: "DELETE",
+  });
+}

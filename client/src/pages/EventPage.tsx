@@ -23,6 +23,18 @@ function EventPage() {
     }
     loadEvents();
   }, []);
+
+  async function deleteEvent(event: EventModelI) {
+    try {
+      await EventsApi.deleteEvent(event._id);
+      setEvents(
+        events.filter((existingEvent) => existingEvent._id !== event._id)
+      );
+    } catch (error) {
+      console.error(error);
+      alert(error);
+    }
+  }
   return (
     <Container>
       <Button
@@ -36,7 +48,11 @@ function EventPage() {
       <Row xs={1} md={2} x1={3} className="g-4">
         {events.map((event) => (
           <Col key={event._id}>
-            <Event event={event} className={styles.event} />
+            <Event
+              event={event}
+              className={styles.event}
+              onDeleteEventClicked={deleteEvent}
+            />
           </Col>
         ))}
       </Row>
