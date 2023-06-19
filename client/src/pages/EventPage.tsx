@@ -3,6 +3,7 @@ import { EventModel as EventModelI } from "../models/event";
 import Event from "../components/Event";
 import { Col, Container, Row } from "react-bootstrap";
 import styles from "../styles/EventPage.module.css";
+import * as EventsApi from "../network/events.api";
 
 function EventPage() {
   const [events, setEvents] = useState<EventModelI[]>([]);
@@ -10,10 +11,7 @@ function EventPage() {
   useEffect(() => {
     async function loadEvents() {
       try {
-        const response = await fetch("/api/events", {
-          method: "GET",
-        });
-        const events = await response.json();
+        const events = await EventsApi.fetchEvents();
         setEvents(events);
       } catch (error) {
         console.error(error);
