@@ -3,6 +3,7 @@ import { EventModel as EventModelI } from "../models/event";
 import Event from "../components/Event";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import styles from "../styles/EventPage.module.css";
+import styleUtils from "../styles/utils.module.css";
 import * as EventsApi from "../network/events.api";
 import { AddEventDialog } from "../components/AddEventDialog";
 
@@ -25,6 +26,7 @@ function EventPage() {
   return (
     <Container>
       <Button
+        className={`mb-4 ${styleUtils.blockCenter}`}
         onClick={() => {
           setShowAddEventDialog(true);
         }}
