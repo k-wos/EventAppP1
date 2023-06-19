@@ -1,15 +1,5 @@
 import { EventModel } from "../models/event";
-
-async function fetchData(input: RequestInfo, init?: RequestInit) {
-  const response = await fetch(input, init);
-  if (response.ok) {
-    return response;
-  } else {
-    const errorBody = await response.json();
-    const errorMessage = errorBody.console.error();
-    throw Error(errorMessage);
-  }
-}
+import fetchData from "../utils/fetchData";
 
 export async function fetchEvents(): Promise<EventModel[]> {
   const response = await fetchData("/api/events", {
