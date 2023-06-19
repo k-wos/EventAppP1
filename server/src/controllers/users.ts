@@ -37,6 +37,13 @@ export const signUp: RequestHandler<
     }
 
     const passwordHashed = await bcrypt.hash(passwardRaw, 10);
+
+    const newUSer = await UserModel.create({
+      username: username,
+      email: email,
+      password: passwordHashed,
+    });
+    res.status(201).json(newUSer);
   } catch (error) {
     next(error);
   }
