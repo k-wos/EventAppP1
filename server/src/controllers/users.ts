@@ -12,7 +12,7 @@ export const getAutheniticatedUser: RequestHandler = async (req, res, next) => {
     }
 
     const user = await UserModel.findById(authenticatedUserId)
-      .select("email")
+      .select("+email")
       .exec();
     res.status(200).json(user);
   } catch (error) {
@@ -107,4 +107,14 @@ export const login: RequestHandler<
   } catch (error) {
     next(error);
   }
+};
+
+export const logout: RequestHandler = (req, res, next) => {
+  req.session.destroy((error) => {
+    if (error) {
+      next(error);
+    } else {
+      res.sendStatus(200);
+    }
+  });
 };
