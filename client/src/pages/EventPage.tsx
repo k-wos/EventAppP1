@@ -6,6 +6,7 @@ import styles from "../styles/EventPage.module.css";
 import styleUtils from "../styles/utils.module.css";
 import * as EventsApi from "../network/events.api";
 import { AddEventDialog } from "../components/AddEventDialog";
+import { FaPlus } from "react-icons/fa";
 
 function EventPage() {
   const [events, setEvents] = useState<EventModelI[]>([]);
@@ -38,11 +39,12 @@ function EventPage() {
   return (
     <Container>
       <Button
-        className={`mb-4 ${styleUtils.blockCenter}`}
+        className={`mb-4 ${styleUtils.blockCenter} ${styleUtils.flexCenter}`}
         onClick={() => {
           setShowAddEventDialog(true);
         }}
       >
+        <FaPlus />
         Dodaj wydarzenie
       </Button>
       <Row xs={1} md={2} x1={3} className="g-4">

@@ -34,6 +34,20 @@ export async function createEvent(event: EventInput): Promise<EventModel> {
   return response.json();
 }
 
+export async function updateEvent(
+  eventId: string,
+  event: EventInput
+): Promise<EventModel> {
+  const response = await fetchData("/api/events" + eventId, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(event),
+  });
+  return response.json();
+}
+
 export async function deleteEvent(eventId: string) {
   await fetchData("/api/events/" + eventId, {
     method: "DELETE",
