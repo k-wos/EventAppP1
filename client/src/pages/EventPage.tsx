@@ -39,7 +39,13 @@ function EventPage() {
         ))}
       </Row>
       {showAddEventDialog && (
-        <AddEventDialog onDismiss={() => setShowAddEventDialog(false)} />
+        <AddEventDialog
+          onDismiss={() => setShowAddEventDialog(false)}
+          onEventSave={(newEvent) => {
+            setEvents([...events, newEvent]);
+            setShowAddEventDialog(false);
+          }}
+        />
       )}
     </Container>
   );

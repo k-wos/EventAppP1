@@ -3,6 +3,7 @@ export function formateDate(dateString: string): string {
     year: "numeric",
     month: "short",
     day: "numeric",
+    hour: "numeric",
     minute: "numeric",
   });
 }
