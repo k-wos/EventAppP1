@@ -53,7 +53,7 @@ export const signUp: RequestHandler<
 };
 
 interface LoginBody {
-  useraname?: string;
+  username?: string;
   password?: string;
 }
 
@@ -63,7 +63,7 @@ export const login: RequestHandler<
   LoginBody,
   unknown
 > = async (req, res, next) => {
-  const username = req.body.useraname;
+  const username = req.body.username;
   const password = req.body.password;
 
   try {
