@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { EventModel as EventModelI } from "../models/event";
 import Event from "../components/Event";
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import styles from "../styles/EventPage.module.css";
 import * as EventsApi from "../network/events.api";
 import { AddEventDialog } from "../components/AddEventDialog";
@@ -24,6 +24,13 @@ function EventPage() {
   }, []);
   return (
     <Container>
+      <Button
+        onClick={() => {
+          setShowAddEventDialog(true);
+        }}
+      >
+        Dodaj wydarzenie
+      </Button>
       <Row xs={1} md={2} x1={3} className="g-4">
         {events.map((event) => (
           <Col key={event._id}>
@@ -31,7 +38,9 @@ function EventPage() {
           </Col>
         ))}
       </Row>
-      {showAddEventDialog && <AddEventDialog />}
+      {showAddEventDialog && (
+        <AddEventDialog onDismiss={() => setShowAddEventDialog(false)} />
+      )}
     </Container>
   );
 }
