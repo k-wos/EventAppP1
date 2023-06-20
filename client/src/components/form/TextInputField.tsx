@@ -1,6 +1,7 @@
 import React from "react";
 import { Form } from "react-bootstrap";
 import { FieldError, RegisterOptions, UseFormRegister } from "react-hook-form";
+import userStyles from "../../styles/UserForms.module.css";
 
 interface TextInputFieldProps {
   name: string;
@@ -21,7 +22,7 @@ const TextInputField = ({
 }: TextInputFieldProps) => {
   return (
     <Form.Group className="mb-b" controlId={name + "-input"}>
-      <Form.Label>{label}</Form.Label>
+      <Form.Label className={userStyles.label}>{label}</Form.Label>
       <Form.Control
         {...props}
         {...register(name, registerOptions)}
