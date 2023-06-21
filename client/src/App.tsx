@@ -6,6 +6,7 @@ import EventPage from "./pages/EventPage";
 import { User } from "./models/user";
 import * as UserApi from "./network/users.api";
 import LoginPage from "./pages/LoginPage";
+import SelectedEventPage from "./pages/SelectedEventPage";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState<User | null>(null);
@@ -31,6 +32,7 @@ function App() {
           />
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/event/selected" element={<SelectedEventPage />} />
         </Routes>
       </BrowserRouter>
     </div>

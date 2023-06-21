@@ -38,17 +38,8 @@ const EventsPageLoggedInView = () => {
     }
   }
   return (
-    <>
-      <Button
-        className={`mb-4 ${styleUtils.blockCenter} ${styleUtils.flexCenter}`}
-        onClick={() => {
-          setShowAddEventDialog(true);
-        }}
-      >
-        <FaPlus />
-        Dodaj wydarzenie
-      </Button>
-      <Row xs={1} md={4} x1={3} className="g-4">
+    <div>
+      <div className={styles.events}>
         {events.map((event) => (
           <Col key={event._id}>
             <Event
@@ -59,7 +50,16 @@ const EventsPageLoggedInView = () => {
             />
           </Col>
         ))}
-      </Row>
+        <Col
+          className={`mb-4 ${styleUtils.blockCenter} ${styleUtils.flexCenter} ${styles.addEvent}`}
+          onClick={() => {
+            setShowAddEventDialog(true);
+          }}
+        >
+          <FaPlus />
+          Dodaj wydarzenie
+        </Col>
+      </div>
       {showAddEventDialog && (
         <AddEditEventDialog
           onDismiss={() => setShowAddEventDialog(false)}
@@ -85,7 +85,7 @@ const EventsPageLoggedInView = () => {
           }}
         />
       )}
-    </>
+    </div>
   );
 };
 

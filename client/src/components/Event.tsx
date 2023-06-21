@@ -36,7 +36,7 @@ function Event({
       onClick={() => onEventClicked(event)}
     >
       <Card.Body className={styles.cardBody}>
-        <Card.Title className={`${styleUtil.textCenter} `}>
+        <Card.Title className={`${styleUtil.textCenter}  `}>
           {name}
           <MdDelete
             className="text-muted ms-auto"

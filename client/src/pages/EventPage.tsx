@@ -3,6 +3,7 @@ import NavBar from "../components/NavBar";
 import { User } from "../models/user";
 import EventsPageLoggedInView from "../components/EventsPageLoggedInView";
 import { useNavigate } from "react-router-dom";
+import eventStyles from "../styles/EventPage.module.css";
 
 interface EventPageProps {
   loggedInUser: User | null;
@@ -17,11 +18,9 @@ function EventPage({ loggedInUser }: EventPageProps) {
   return (
     <div>
       <NavBar loggedInUser={loggedInUser} onLogoutSuccessful={backHome} />
-      <Container></Container>
-      <>
-        {" "}
-        <EventsPageLoggedInView />{" "}
-      </>
+      <Container className={eventStyles.content}>
+        <EventsPageLoggedInView />
+      </Container>
     </div>
   );
 }
