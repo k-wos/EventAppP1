@@ -6,6 +6,7 @@ import * as UserApi from "../network/users.api";
 import TextInputField from "./form/TextInputField";
 import userStyles from "../styles/UserForms.module.css";
 import { Button } from "react-bootstrap";
+import { Link, redirect } from "react-router-dom";
 
 interface LoginModalProps {
   onLoginSuccessful: (user: User) => void;
@@ -50,6 +51,7 @@ const LoginModal = ({ onLoginSuccessful }: LoginModalProps) => {
         registerOptions={{ required: "Required" }}
         error={errors.password}
       ></TextInputField>
+
       <Button
         type="submit"
         disabled={isSubmitting}
