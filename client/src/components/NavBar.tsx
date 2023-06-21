@@ -9,7 +9,7 @@ interface NavBarProps {
 
 const NavBar = ({ loggedInUser, onLogoutSuccessful }: NavBarProps) => {
   return (
-    <Navbar bg="primary" variant="dark" expand="lg" sticky="top">
+    <Navbar bg="light" data-bs-theme="light" expand="lg" sticky="top">
       <Container>
         <Navbar.Brand>Event App</Navbar.Brand>
       </Container>
