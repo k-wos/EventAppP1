@@ -36,8 +36,8 @@ function Event({
       onClick={() => onEventClicked(event)}
     >
       <Card.Body className={styles.cardBody}>
-        <Card.Title className={styleUtil.flexCenter}>
-          {name}{" "}
+        <Card.Title className={`${styleUtil.textCenter} `}>
+          {name}
           <MdDelete
             className="text-muted ms-auto"
             onClick={(e) => {
@@ -48,7 +48,9 @@ function Event({
         </Card.Title>
         <Card.Text className={styles.cardText}>{description}</Card.Text>
       </Card.Body>
-      <Card.Footer className="text-muted">{formateDate(createdAt)}</Card.Footer>
+      <Card.Footer className={"text-muted"}>
+        {formateDate(createdAt)}
+      </Card.Footer>
     </Card>
   );
 }

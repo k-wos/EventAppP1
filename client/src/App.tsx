@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import logo from "./logo.svg";
-import Registerpage from "./components/Registerpage/Registerpage";
 import HomePage from "./pages/HomePage";
 import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
 import EventPage from "./pages/EventPage";

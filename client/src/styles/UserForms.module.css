@@ -45,3 +45,15 @@
     font-weight: 500;
     transition: 0.5s;
   }
+  .button:hover{
+    background-color: #d64c42;
+  }
+  .header2{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: 600;
+    color: #8f2c24;
+    margin-bottom: 10px;
+  }

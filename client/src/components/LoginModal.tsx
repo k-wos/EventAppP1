@@ -30,7 +30,8 @@ const LoginModal = ({ onLoginSuccessful }: LoginModalProps) => {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className={userStyles.register}>
+      <h2 className={userStyles.header2}>Zaloguj się</h2>
       <TextInputField
         className={userStyles.input}
         name="username"

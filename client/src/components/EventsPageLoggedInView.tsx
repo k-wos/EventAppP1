@@ -48,7 +48,7 @@ const EventsPageLoggedInView = () => {
         <FaPlus />
         Dodaj wydarzenie
       </Button>
-      <Row xs={1} md={2} x1={3} className="g-4">
+      <Row xs={1} md={4} x1={3} className="g-4">
         {events.map((event) => (
           <Col key={event._id}>
             <Event

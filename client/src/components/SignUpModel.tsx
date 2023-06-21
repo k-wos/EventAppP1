@@ -37,6 +37,7 @@ const SignUpModel = ({
       onSubmit={handleSubmit(onSubmit)}
       className={userStyles.register}
     >
+      <h2 className={userStyles.header2}>Załóż konto</h2>
       <TextInputField
         className={userStyles.input}
         name="username"
