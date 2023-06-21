@@ -1,12 +1,18 @@
 import { RequestHandler } from "express";
 import EventModel from "../models/event";
 import createHttpError from "http-errors";
-import event from "../models/event";
 import mongoose from "mongoose";
+import { assertIsDefined } from "../util/assertIsDefined";
 
 export const getEvents: RequestHandler = async (req, res, next) => {
+  const authenticatedUserId = req.session.userId;
+
   try {
-    const events = await EventModel.find().exec();
+    assertIsDefined(authenticatedUserId);
+
+    const events = await EventModel.find({
+      userId: authenticatedUserId,
+    }).exec();
     res.status(200).json(events);
   } catch (error) {
     next(error);
@@ -15,8 +21,10 @@ export const getEvents: RequestHandler = async (req, res, next) => {
 
 export const getEvent: RequestHandler = async (req, res, next) => {
   const eventId = req.params.eventId;
+  const authenticatedUserId = req.session.userId;
 
   try {
+    assertIsDefined(authenticatedUserId);
     if (!mongoose.isValidObjectId(eventId)) {
       throw createHttpError(400, "Invalid event Id");
     }
@@ -24,6 +32,9 @@ export const getEvent: RequestHandler = async (req, res, next) => {
 
     if (!event) {
       throw createHttpError(404, "Event not Found");
+    }
+    if (!event.userId.equals(authenticatedUserId)) {
+      throw createHttpError(401, "You cannot access this event");
     }
 
     res.status(200).json(event);
@@ -45,11 +56,14 @@ export const createEvent: RequestHandler<
 > = async (req, res, next) => {
   const name = req.body.name;
   const description = req.body.description;
+  const authenticatedUserId = req.session.userId;
   try {
+    assertIsDefined(authenticatedUserId);
     if (!name) {
       throw createHttpError(400, "Event must have name");
     }
     const newEvent = await EventModel.create({
+      userId: authenticatedUserId,
       name: name,
       description: description,
     });
@@ -78,7 +92,9 @@ export const updateEvent: RequestHandler<
   const eventId = req.params.eventId;
   const newName = req.body.name;
   const newDrescription = req.body.description;
+  const authenticatedUserId = req.session.userId;
   try {
+    assertIsDefined(authenticatedUserId);
     if (!mongoose.isValidObjectId(eventId)) {
       throw createHttpError(400, "Invalid event Id");
     }
@@ -89,6 +105,9 @@ export const updateEvent: RequestHandler<
     const event = await EventModel.findById(eventId).exec();
     if (!event) {
       throw createHttpError(404, "Event not Found");
+    }
+    if (!event.userId.equals(authenticatedUserId)) {
+      throw createHttpError(401, "You cannot access this event");
     }
     event.name = newName;
     event.description = newDrescription;
@@ -103,8 +122,9 @@ export const updateEvent: RequestHandler<
 
 export const deleteEvent: RequestHandler = async (req, res, next) => {
   const eventId = req.params.eventId;
-
+  const authenticatedUserId = req.session.userId;
   try {
+    assertIsDefined(authenticatedUserId);
     if (!mongoose.isValidObjectId(eventId)) {
       throw createHttpError(400, "Invalid event Id");
     }
@@ -112,6 +132,9 @@ export const deleteEvent: RequestHandler = async (req, res, next) => {
 
     if (!event) {
       throw createHttpError(404, "Event not found");
+    }
+    if (!event.userId.equals(authenticatedUserId)) {
+      throw createHttpError(401, "You cannot access this event");
     }
 
     await event.deleteOne();
