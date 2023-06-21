@@ -4,12 +4,12 @@ import homeStyles from "../styles/Home.module.css";
 
 function HomePage() {
   return (
-    <main className={homeStyles.mainContainer}>
-      <SignUpModel onSignUpSuccessful={() => {}} onSignInClicked={() => {}} />;
-    </main>
     // <main className={homeStyles.mainContainer}>
-    //   <LoginModal onLoginSuccessful={() => {}} />;
+    //   <SignUpModel onSignUpSuccessful={() => {}} onSignInClicked={() => {}} />;
     // </main>
+    <main className={homeStyles.mainContainer}>
+      <LoginModal onLoginSuccessful={() => {}} />;
+    </main>
   );
 }
 
