@@ -2,6 +2,7 @@ import { InferSchemaType, Schema, model } from "mongoose";
 
 const eventSchema = new Schema(
   {
+    userId: { type: Schema.Types.ObjectId, required: true },
     name: { type: String, required: true },
     description: { type: String },
     address: { type: String },
