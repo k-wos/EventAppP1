@@ -7,6 +7,7 @@ import styleUtils from "../styles/utils.module.css";
 import * as EventsApi from "../network/events.api";
 import { AddEditEventDialog } from "../components/AddEditEventDialog";
 import { FaPlus } from "react-icons/fa";
+import NavBar from "../components/NavBar";
 
 function EventPage() {
   const [events, setEvents] = useState<EventModelI[]>([]);
@@ -38,54 +39,57 @@ function EventPage() {
     }
   }
   return (
-    <Container>
-      <Button
-        className={`mb-4 ${styleUtils.blockCenter} ${styleUtils.flexCenter}`}
-        onClick={() => {
-          setShowAddEventDialog(true);
-        }}
-      >
-        <FaPlus />
-        Dodaj wydarzenie
-      </Button>
-      <Row xs={1} md={2} x1={3} className="g-4">
-        {events.map((event) => (
-          <Col key={event._id}>
-            <Event
-              event={event}
-              className={styles.event}
-              onEventClicked={setEventToEdit}
-              onDeleteEventClicked={deleteEvent}
-            />
-          </Col>
-        ))}
-      </Row>
-      {showAddEventDialog && (
-        <AddEditEventDialog
-          onDismiss={() => setShowAddEventDialog(false)}
-          onEventSave={(newEvent) => {
-            setEvents([...events, newEvent]);
-            setShowAddEventDialog(false);
+    <div>
+      <NavBar loggedInUser={null} onLogoutSuccessful={() => {}} />
+      <Container>
+        <Button
+          className={`mb-4 ${styleUtils.blockCenter} ${styleUtils.flexCenter}`}
+          onClick={() => {
+            setShowAddEventDialog(true);
           }}
-        />
-      )}
-      {eventToEdit && (
-        <AddEditEventDialog
-          eventToEdit={eventToEdit}
-          onDismiss={() => setEventToEdit(null)}
-          onEventSave={(updatedEvent) => {
-            setEvents(
-              events.map((existingEvent) =>
-                existingEvent._id === updatedEvent._id
-                  ? updatedEvent
-                  : existingEvent
-              )
-            );
-            setEventToEdit(null);
-          }}
-        />
-      )}
-    </Container>
+        >
+          <FaPlus />
+          Dodaj wydarzenie
+        </Button>
+        <Row xs={1} md={2} x1={3} className="g-4">
+          {events.map((event) => (
+            <Col key={event._id}>
+              <Event
+                event={event}
+                className={styles.event}
+                onEventClicked={setEventToEdit}
+                onDeleteEventClicked={deleteEvent}
+              />
+            </Col>
+          ))}
+        </Row>
+        {showAddEventDialog && (
+          <AddEditEventDialog
+            onDismiss={() => setShowAddEventDialog(false)}
+            onEventSave={(newEvent) => {
+              setEvents([...events, newEvent]);
+              setShowAddEventDialog(false);
+            }}
+          />
+        )}
+        {eventToEdit && (
+          <AddEditEventDialog
+            eventToEdit={eventToEdit}
+            onDismiss={() => setEventToEdit(null)}
+            onEventSave={(updatedEvent) => {
+              setEvents(
+                events.map((existingEvent) =>
+                  existingEvent._id === updatedEvent._id
+                    ? updatedEvent
+                    : existingEvent
+                )
+              );
+              setEventToEdit(null);
+            }}
+          />
+        )}
+      </Container>
+    </div>
   );
 }
 

@@ -9,9 +9,13 @@ import userStyles from "../styles/UserForms.module.css";
 
 interface SignUpModelProps {
   onSignUpSuccessful: (user: User) => void;
+  onSignInClicked: () => void;
 }
 
-const SignUpModel = ({ onSignUpSuccessful }: SignUpModelProps) => {
+const SignUpModel = ({
+  onSignUpSuccessful,
+  onSignInClicked,
+}: SignUpModelProps) => {
   const {
     register,
     handleSubmit,

@@ -10,8 +10,8 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          {/* <Route path="/" element={<EventPage />} /> */}
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<EventPage />} />
+          {/* <Route path="/" element={<HomePage />} /> */}
         </Routes>
       </BrowserRouter>
     </div>
