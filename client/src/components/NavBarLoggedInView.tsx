@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { User } from "../models/user";
 import * as UserApi from "../network/users.api";
 import LoginModal from "./LoginModal";
@@ -26,9 +26,7 @@ const NavBarLoggedInView = ({
 
   return (
     <>
-      <Navbar.Text className="me-2">
-        Zalogowany jako: {user.username}
-      </Navbar.Text>
+      <Navbar.Text className="me-2">Zalogowany jako: {user.email}</Navbar.Text>
       <Button onClick={logout}>Wyloguj</Button>
     </>
   );

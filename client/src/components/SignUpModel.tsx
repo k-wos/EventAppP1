@@ -68,6 +68,7 @@ const SignUpModel = ({
         registerOptions={{ required: "Required" }}
         error={errors.pasword}
       ></TextInputField>
+      <p onClick={onSignInClicked}>Posiadasz już konto? Zaloguj się</p>
       <Button
         type="submit"
         disabled={isSubmitting}

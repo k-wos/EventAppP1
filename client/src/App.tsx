@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
 import EventPage from "./pages/EventPage";
 import { User } from "./models/user";
 import * as UserApi from "./network/users.api";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState<User | null>(null);
@@ -30,6 +31,7 @@ function App() {
             element={<EventPage loggedInUser={loggedInUser} />}
           />
           <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
       </BrowserRouter>
     </div>
