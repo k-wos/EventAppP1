@@ -57,3 +57,7 @@
     color: #8f2c24;
     margin-bottom: 10px;
   }
+  .toLogin:hover{
+    cursor:pointer;
+    text-decoration: underline;
+  }
