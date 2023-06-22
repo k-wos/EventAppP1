@@ -5,6 +5,9 @@ import { EventModel as EventModelI } from "../models/event";
 import NavBar from "../components/NavBar";
 import { User } from "../models/user";
 import SidebarMenu from "../components/SidebarMenu";
+import stylesUtils from "../styles/utils.module.css";
+import selectedStyles from "../styles/SelectedEvent.module.css";
+import avatar from "../Assets/avatar.png";
 
 interface SelectedEventPageProps {
   loggedInUser: User | null;
@@ -34,14 +37,33 @@ const SelectedEventPage = ({ loggedInUser }: SelectedEventPageProps) => {
   return (
     <div>
       <NavBar loggedInUser={loggedInUser} onLogoutSuccessful={backHome} />
-      <SidebarMenu></SidebarMenu>
-      <div>
-        {event?.name}
-        {event?.description}
-        {event?.town}
-        {event?.address}
-        {event?.date}
-        {event?.organizer}
+      <div className={stylesUtils.flexContent}>
+        <SidebarMenu></SidebarMenu>
+        <div className={selectedStyles.content}>
+          {event?.name}
+          {event?.description}
+          {event?.town}
+          {event?.address}
+          {event?.date}
+          {event?.organizer}
+        </div>
+        <div className={selectedStyles.userPanel}>
+          <div className={selectedStyles.userBox}>
+            <img src={avatar} className={selectedStyles.avatarIcon} alt="" />
+            <p className={selectedStyles.userName}>Nazwa użytkownika</p>
+          </div>
+          <div className={selectedStyles.lastActivity}>
+            <p className={selectedStyles.lastActivityParagraph}>
+              Ostatnia aktywnosc:
+            </p>
+            <div className={selectedStyles.friends}>
+              <img src={avatar} className={selectedStyles.avatarIcons} alt="" />
+              <img src={avatar} className={selectedStyles.avatarIcons} alt="" />
+              <img src={avatar} className={selectedStyles.avatarIcons} alt="" />
+              <img src={avatar} className={selectedStyles.avatarIcons} alt="" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

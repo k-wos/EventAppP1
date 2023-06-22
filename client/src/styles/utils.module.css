@@ -14,3 +14,6 @@
 .textCenter{
     text-align:center;
 }
+.flexContent{
+    display:flex;
+}
