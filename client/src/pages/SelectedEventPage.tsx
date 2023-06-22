@@ -8,6 +8,8 @@ import SidebarMenu from "../components/SidebarMenu";
 import stylesUtils from "../styles/utils.module.css";
 import selectedStyles from "../styles/SelectedEvent.module.css";
 import avatar from "../Assets/avatar.png";
+import { formateDate } from "../utils/formateDate";
+import localization from "../Assets/maps.png";
 
 interface SelectedEventPageProps {
   loggedInUser: User | null;
@@ -40,15 +42,23 @@ const SelectedEventPage = ({ loggedInUser }: SelectedEventPageProps) => {
       <div className={stylesUtils.flexContent}>
         <SidebarMenu></SidebarMenu>
         <div className={selectedStyles.content}>
-          <div className={selectedStyles.nameDescription}>
-            <p className={selectedStyles.name}> {event?.name}</p>
-            <p className={selectedStyles.description}>{event?.description}</p>
+          <div className={selectedStyles.cards}>
+            <div className={selectedStyles.thumbnail}>
+              <img
+                className={selectedStyles.left}
+                src={localization}
+                alt="google maps"
+              ></img>
+            </div>
+            <div className={selectedStyles.right}>
+              <h1 className={selectedStyles.name}>{event?.name}</h1>
+              <div className={selectedStyles.separator}></div>
+              <p>{event?.description}</p>
+            </div>
+            <h5 className={selectedStyles.dateTime}>
+              {formateDate(event?.date!)}
+            </h5>
           </div>
-          <div className={selectedStyles.map}></div>
-          {event?.town}
-          {event?.address}
-          {event?.date}
-          {event?.organizer}
         </div>
         <div className={selectedStyles.userPanel}>
           <div className={selectedStyles.userBox}>

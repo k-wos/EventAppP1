@@ -1,5 +1,8 @@
 .content{
     width: 60%;
+    margin:0 auto;
+    display: flex;
+    justify-content: center;
     
 }
 .userPanel{
@@ -67,17 +70,66 @@
     border-radius: 25px;
 }
 
-.nameDescription{
-    display: flex;
-    flex-direction: column;
-    padding-left: 15px;
-    padding-top: 15px;
+
+.cards{
+    position : relative;
+	height: 450px;
+	width: 900px;
+	margin : 200px auto;
+	background-color : #FFF;
+	-webkit-box-shadow: -9px 8px 15px -15px rgba(66, 68, 90, 1);
+    -moz-box-shadow: -9px 8px 15px -15px rgba(66, 68, 90, 1);
+    box-shadow: -9px 8px 15px -15px rgba(66, 68, 90, 1);
+}
+.thumbnail{
+    float : left;
+	position : relative ;
+	left : 30px;
+	top : -30px;
+	height : 290px;
+	width : 530px;
+	-webkit-box-shadow: 10px 10px 60px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 10px 10px 60px 0px rgba(0,0,0,0.75);
+	box-shadow: 10px 10px 60px 0px rgba(0,0,0,0.75);
+	overflow: hidden;
+    
 }
 
-.description{
-    color: #c5c5c5;
+.left{
+    position: absolute;
+	left: 50%;
+	top: 50%;
+	height: auto;
+	width: 100%;
+	-webkit-transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
 }
+.right{
+    margin-left : 590px;
+	margin-right : 20px;
+}
+
 .name{
-    font-weight: bold;
-    margin-bottom: 3px;
+    padding-top : 15px;
+	font-size : 1.3rem;
+	color : #4B4B4B;
+}
+.separator{
+    margin-top : 10px;
+	border : 1px solid #C3C3C3;
+}
+.description{
+    text-align: justify;
+	padding-top : 10px;
+	font-size : 0.95rem;
+	line-height: 150%;
+	color : #4B4B4B;
+}
+.dateTime{
+    position : absolute;
+	left : 30px;
+	bottom : 0px;
+	font-size : 6rem;
+	color : #C3C3C3;
 }

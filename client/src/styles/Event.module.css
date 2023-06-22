@@ -36,6 +36,9 @@
     
     
 }
+.delete{
+    color:white;
+}
 .card-header:after{
     content:'';
     position: absolute;

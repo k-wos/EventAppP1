@@ -1,8 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { User } from "../models/user";
 import * as UserApi from "../network/users.api";
-import LoginModal from "./LoginModal";
-import HomePage from "../pages/HomePage";
 import { Button, Navbar } from "react-bootstrap";
 
 interface NavBarLoggedInProps {

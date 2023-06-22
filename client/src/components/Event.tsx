@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "../styles/Event.module.css";
 import { EventModel as EventModelI } from "../models/event";
+import { MdDelete } from "react-icons/md";
 
 import { formateDate } from "../utils/formateDate";
 
@@ -46,7 +47,15 @@ function Event({
       className={`${styles.eventCard}`}
       onClick={() => onEventClicked(event)}
     >
-      <div className={styles.cardHeader}></div>
+      <div className={styles.cardHeader}>
+        <MdDelete
+          className={`text-muted ms-auto`}
+          onClick={(e) => {
+            onDeleteEventClicked(event);
+            e.stopPropagation();
+          }}
+        />
+      </div>
 
       <div className={styles.cardBody}>
         <h2 className={styles.name}>{name}</h2>
