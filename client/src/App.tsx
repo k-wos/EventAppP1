@@ -32,7 +32,7 @@ function App() {
           />
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/event/selected" element={<SelectedEventPage />} />
+          <Route path="/events/:eventId" element={<SelectedEventPage />} />
         </Routes>
       </BrowserRouter>
     </div>

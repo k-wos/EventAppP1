@@ -6,13 +6,11 @@ import { EventInput } from "../network/events.api";
 import * as EventApi from "../network/events.api";
 
 interface AddEditEventDialogProps {
-  eventToEdit?: EventModel;
   onDismiss: () => void;
   onEventSave: (event: EventModel) => void;
 }
 
 export const AddEditEventDialog = ({
-  eventToEdit,
   onDismiss,
   onEventSave,
 }: AddEditEventDialogProps) => {
@@ -22,19 +20,16 @@ export const AddEditEventDialog = ({
     formState: { errors, isSubmitting },
   } = useForm<EventInput>({
     defaultValues: {
-      name: eventToEdit?.name || "",
-      description: eventToEdit?.description || "",
+      name: "",
+      description: "",
     },
   });
 
   async function onSubmit(input: EventInput) {
     try {
       let eventResponse: EventModel;
-      if (eventToEdit) {
-        eventResponse = await EventApi.updateEvent(eventToEdit._id, input);
-      } else {
-        eventResponse = await EventApi.createEvent(input);
-      }
+
+      eventResponse = await EventApi.createEvent(input);
 
       onEventSave(eventResponse);
     } catch (error) {
@@ -45,9 +40,7 @@ export const AddEditEventDialog = ({
   return (
     <Modal show onHide={onDismiss}>
       <Modal.Header closeButton>
-        <Modal.Title>
-          {eventToEdit ? "Edytuj wydarzenie" : "Dodaj wydarzenie"}
-        </Modal.Title>
+        <Modal.Title>"Dodaj wydarzenie"</Modal.Title>
       </Modal.Header>
 
       <Modal.Body>

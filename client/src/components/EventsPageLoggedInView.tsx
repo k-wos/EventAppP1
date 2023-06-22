@@ -7,11 +7,17 @@ import { EventModel as EventModelI } from "../models/event";
 import * as EventsApi from "../network/events.api";
 import styles from "../styles/EventPage.module.css";
 import styleUtils from "../styles/utils.module.css";
+import { useNavigate } from "react-router-dom";
 
-const EventsPageLoggedInView = () => {
+interface EventsPageLoggedProps {
+  showEvent?: EventModelI;
+}
+
+const EventsPageLoggedInView = ({ showEvent }: EventsPageLoggedProps) => {
   const [events, setEvents] = useState<EventModelI[]>([]);
   const [showAddEventDialog, setShowAddEventDialog] = useState(false);
-  const [eventToEdit, setEventToEdit] = useState<EventModelI | null>(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function loadEvents() {
@@ -25,6 +31,10 @@ const EventsPageLoggedInView = () => {
     }
     loadEvents();
   }, []);
+
+  async function showSelectedEvent(event: EventModelI) {
+    navigate(`/events/${event._id}`);
+  }
 
   async function deleteEvent(event: EventModelI) {
     try {
@@ -45,7 +55,7 @@ const EventsPageLoggedInView = () => {
             <Event
               event={event}
               className={styles.event}
-              onEventClicked={setEventToEdit}
+              onEventClicked={showSelectedEvent}
               onDeleteEventClicked={deleteEvent}
             />
           </Col>
@@ -66,22 +76,6 @@ const EventsPageLoggedInView = () => {
           onEventSave={(newEvent) => {
             setEvents([...events, newEvent]);
             setShowAddEventDialog(false);
-          }}
-        />
-      )}
-      {eventToEdit && (
-        <AddEditEventDialog
-          eventToEdit={eventToEdit}
-          onDismiss={() => setEventToEdit(null)}
-          onEventSave={(updatedEvent) => {
-            setEvents(
-              events.map((existingEvent) =>
-                existingEvent._id === updatedEvent._id
-                  ? updatedEvent
-                  : existingEvent
-              )
-            );
-            setEventToEdit(null);
           }}
         />
       )}

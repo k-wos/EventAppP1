@@ -1,10 +1,19 @@
 import { EventModel } from "../models/event";
 import fetchData from "../utils/fetchData";
+import axios from "axios";
 
 export async function fetchEvents(): Promise<EventModel[]> {
   const response = await fetchData("/api/events", {
     method: "GET",
   });
+  return await response.json();
+}
+
+export async function getEvent(eventId: string): Promise<EventModel> {
+  const response = await fetch(`/api/events/` + eventId, {
+    method: "GET",
+  });
+
   return await response.json();
 }
 
