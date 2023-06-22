@@ -7,11 +7,7 @@
     
 }
 .addEvent {
-    height:300px;
-    min-width: 200px;
-    background-color: #4d4aea;
-    transition: box-shadow .2s ease-in-out;
-    cursor: pointer;
+    margin-top: 10px;
     
 }
 

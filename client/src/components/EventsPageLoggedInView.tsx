@@ -56,7 +56,7 @@ const EventsPageLoggedInView = ({ showEvent }: EventsPageLoggedProps) => {
   return (
     <div>
       <Button
-        className={`mb-4 ${styleUtils.blockCenter} ${styleUtils.flexCenter} `}
+        className={`mb-4 ${styleUtils.blockCenter} ${styleUtils.flexCenter} ${styles.addEvent}`}
         onClick={() => {
           setShowAddEventDialog(true);
         }}

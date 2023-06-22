@@ -4,6 +4,7 @@ import * as EventApi from "../network/events.api";
 import { EventModel as EventModelI } from "../models/event";
 import NavBar from "../components/NavBar";
 import { User } from "../models/user";
+import SidebarMenu from "../components/SidebarMenu";
 
 interface SelectedEventPageProps {
   loggedInUser: User | null;
@@ -33,12 +34,15 @@ const SelectedEventPage = ({ loggedInUser }: SelectedEventPageProps) => {
   return (
     <div>
       <NavBar loggedInUser={loggedInUser} onLogoutSuccessful={backHome} />
-      {event?.name}
-      {event?.description}
-      {event?.town}
-      {event?.address}
-      {event?.date}
-      {event?.organizer}
+      <SidebarMenu></SidebarMenu>
+      <div>
+        {event?.name}
+        {event?.description}
+        {event?.town}
+        {event?.address}
+        {event?.date}
+        {event?.organizer}
+      </div>
     </div>
   );
 };

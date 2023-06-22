@@ -8,6 +8,11 @@
     background-image: url("../Assets/pexels-krivec-ales-552789.jpg");
     background-size: cover;
 }
+.eventCard:hover{
+    box-shadow: 0 40px 130px rgba(0, 0, 0, 0.6);
+    -webkit-transform: scale(1.1, 1.1);
+    transform: scale(1.1, 1.1);
+}
 
 .cardText {
     white-space: pre-line;
@@ -20,3 +25,4 @@
 .eventName{
     text-align: center;
 }
+
