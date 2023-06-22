@@ -4,8 +4,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/global.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import Registerpage from "./components/Registerpage/Registerpage";
-import Header from "./components/Header/Header";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

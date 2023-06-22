@@ -40,8 +40,11 @@ const SelectedEventPage = ({ loggedInUser }: SelectedEventPageProps) => {
       <div className={stylesUtils.flexContent}>
         <SidebarMenu></SidebarMenu>
         <div className={selectedStyles.content}>
-          {event?.name}
-          {event?.description}
+          <div className={selectedStyles.nameDescription}>
+            <p className={selectedStyles.name}> {event?.name}</p>
+            <p className={selectedStyles.description}>{event?.description}</p>
+          </div>
+          <div className={selectedStyles.map}></div>
           {event?.town}
           {event?.address}
           {event?.date}
