@@ -20,6 +20,10 @@ export async function getEvent(eventId: string): Promise<EventModel> {
 export interface EventInput {
   name: string;
   description?: string;
+  town?: string;
+  address?: string;
+  date?: Date;
+  organizer?: string;
 }
 
 export async function createEvent(event: EventInput): Promise<EventModel> {

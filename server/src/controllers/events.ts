@@ -46,6 +46,10 @@ export const getEvent: RequestHandler = async (req, res, next) => {
 interface CreateEventBody {
   name: string;
   description?: string;
+  address?: string;
+  town?: string;
+  date?: Date;
+  organizer?: string;
 }
 
 export const createEvent: RequestHandler<
@@ -56,6 +60,10 @@ export const createEvent: RequestHandler<
 > = async (req, res, next) => {
   const name = req.body.name;
   const description = req.body.description;
+  const address = req.body.address;
+  const town = req.body.town;
+  const date = req.body.date;
+  const organizer = req.body.organizer;
   const authenticatedUserId = req.session.userId;
   try {
     assertIsDefined(authenticatedUserId);
@@ -66,6 +74,10 @@ export const createEvent: RequestHandler<
       userId: authenticatedUserId,
       name: name,
       description: description,
+      address: address,
+      town: town,
+      date: date,
+      organizer: organizer,
     });
 
     res.status(201).json(newEvent);

@@ -22,6 +22,9 @@ export const AddEditEventDialog = ({
     defaultValues: {
       name: "",
       description: "",
+      town: "",
+      address: "",
+      organizer: "",
     },
   });
 
@@ -59,6 +62,26 @@ export const AddEditEventDialog = ({
           <Form.Group className="mb-3">
             <Form.Label>Opis</Form.Label>
             <Form.Control as="textarea" rows={5} {...register("description")} />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Adres</Form.Label>
+            <Form.Control type="text" {...register("address")} />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Miasto</Form.Label>
+            <Form.Control type="text" {...register("town")} />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Adres</Form.Label>
+            <Form.Control type="text" {...register("address")} />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Data</Form.Label>
+            <Form.Control type="date" {...register("date")} />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Organizator</Form.Label>
+            <Form.Control type="text" {...register("organizer")} />
           </Form.Group>
         </Form>
       </Modal.Body>

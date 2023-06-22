@@ -20,7 +20,16 @@ const SelectedEventPage = () => {
     getNote();
   }, []);
 
-  return <div>{event?.name}</div>;
+  return (
+    <div>
+      {event?.name}
+      {event?.description}
+      {event?.town}
+      {event?.address}
+      {event?.date}
+      {event?.organizer}
+    </div>
+  );
 };
 
 export default SelectedEventPage;
