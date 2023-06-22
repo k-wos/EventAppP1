@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import logo from "./logo.svg";
 import HomePage from "./pages/HomePage";
-import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import EventPage from "./pages/EventPage";
 import { User } from "./models/user";
 import * as UserApi from "./network/users.api";
@@ -32,7 +31,10 @@ function App() {
           />
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/events/:eventId" element={<SelectedEventPage />} />
+          <Route
+            path="/events/:eventId"
+            element={<SelectedEventPage loggedInUser={loggedInUser} />}
+          />
         </Routes>
       </BrowserRouter>
     </div>

@@ -1,6 +1,5 @@
 import { EventModel } from "../models/event";
 import fetchData from "../utils/fetchData";
-import axios from "axios";
 
 export async function fetchEvents(): Promise<EventModel[]> {
   const response = await fetchData("/api/events", {

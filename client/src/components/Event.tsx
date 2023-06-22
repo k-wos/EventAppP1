@@ -19,16 +19,7 @@ function Event({
   onDeleteEventClicked,
   onEventClicked,
 }: EventProps) {
-  const {
-    name,
-    description,
-    createdAt,
-    updatedAt,
-    address,
-    town,
-    date,
-    organizer,
-  } = event;
+  const { name, description, createdAt } = event;
 
   return (
     <Card

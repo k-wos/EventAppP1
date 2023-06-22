@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import * as EventApi from "../network/events.api";
 import { EventModel as EventModelI } from "../models/event";
+import NavBar from "../components/NavBar";
+import { User } from "../models/user";
 
-const SelectedEventPage = () => {
+interface SelectedEventPageProps {
+  loggedInUser: User | null;
+}
+
+const SelectedEventPage = ({ loggedInUser }: SelectedEventPageProps) => {
   const params = useParams();
+  const navigate = useNavigate();
   const [event, setEvent] = useState<EventModelI>();
 
   useEffect(() => {
@@ -19,9 +26,13 @@ const SelectedEventPage = () => {
     }
     getNote();
   }, []);
+  function backHome() {
+    navigate("/");
+  }
 
   return (
     <div>
+      <NavBar loggedInUser={loggedInUser} onLogoutSuccessful={backHome} />
       {event?.name}
       {event?.description}
       {event?.town}

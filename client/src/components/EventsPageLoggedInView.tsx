@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Col, Spinner } from "react-bootstrap";
+import { Button, Col, Spinner } from "react-bootstrap";
 import { FaPlus } from "react-icons/fa";
 import { AddEditEventDialog } from "../components/AddEditEventDialog";
 import Event from "../components/Event";
@@ -55,6 +55,15 @@ const EventsPageLoggedInView = ({ showEvent }: EventsPageLoggedProps) => {
   }
   return (
     <div>
+      <Button
+        className={`mb-4 ${styleUtils.blockCenter} ${styleUtils.flexCenter} `}
+        onClick={() => {
+          setShowAddEventDialog(true);
+        }}
+      >
+        <FaPlus />
+        Dodaj wydarzenie
+      </Button>
       <div className={styles.events}>
         {events.map((event) => (
           <Col key={event._id}>
@@ -66,15 +75,7 @@ const EventsPageLoggedInView = ({ showEvent }: EventsPageLoggedProps) => {
             />
           </Col>
         ))}
-        <Col
-          className={`mb-4 ${styleUtils.blockCenter} ${styleUtils.flexCenter} ${styles.addEvent}`}
-          onClick={() => {
-            setShowAddEventDialog(true);
-          }}
-        >
-          <FaPlus />
-          Dodaj wydarzenie
-        </Col>
+
         {eventsLoading && <Spinner animation="border" variant="primary" />}
         {showEventsLoadingError && <p>Coś poszlo nie tak...Odśwież!</p>}
         {!eventsLoading && !showEventsLoadingError && <></>}
