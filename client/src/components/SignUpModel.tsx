@@ -45,7 +45,7 @@ const SignUpModel = ({
         type="text"
         placeholder="Nazwa uzytkownika"
         register={register}
-        registerOptions={{ required: "Required" }}
+        registerOptions={{ required: "Wymagane" }}
         error={errors.username}
       ></TextInputField>
 
@@ -56,7 +56,7 @@ const SignUpModel = ({
         type="email"
         placeholder="Email"
         register={register}
-        registerOptions={{ required: "Required" }}
+        registerOptions={{ required: "Wymagane" }}
         error={errors.email}
       ></TextInputField>
       <TextInputField
@@ -66,7 +66,7 @@ const SignUpModel = ({
         type="password"
         placeholder="***********"
         register={register}
-        registerOptions={{ required: "Required" }}
+        registerOptions={{ required: "Wymagane" }}
         error={errors.pasword}
       ></TextInputField>
       <p onClick={onSignInClicked}>Posiadasz już konto? Zaloguj się</p>

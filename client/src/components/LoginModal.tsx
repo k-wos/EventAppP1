@@ -6,7 +6,6 @@ import * as UserApi from "../network/users.api";
 import TextInputField from "./form/TextInputField";
 import userStyles from "../styles/UserForms.module.css";
 import { Button } from "react-bootstrap";
-import { Link, redirect } from "react-router-dom";
 
 interface LoginModalProps {
   onLoginSuccessful: (user: User) => void;
@@ -24,7 +23,7 @@ const LoginModal = ({ onLoginSuccessful }: LoginModalProps) => {
       const user = await UserApi.login(credentials);
       onLoginSuccessful(user);
     } catch (error) {
-      alert(error);
+      alert("Nieprawidłowe dane logowania");
       console.error(error);
     }
   }
@@ -39,7 +38,7 @@ const LoginModal = ({ onLoginSuccessful }: LoginModalProps) => {
         type="text"
         placeholder="Nazwa uzytkownika"
         register={register}
-        registerOptions={{ required: "Required" }}
+        registerOptions={{ required: "Wymagane" }}
         error={errors.username}
       ></TextInputField>
       <TextInputField
@@ -49,7 +48,7 @@ const LoginModal = ({ onLoginSuccessful }: LoginModalProps) => {
         type="password"
         placeholder="***********"
         register={register}
-        registerOptions={{ required: "Required" }}
+        registerOptions={{ required: "Wymagane" }}
         error={errors.password}
       ></TextInputField>
 

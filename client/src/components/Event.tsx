@@ -1,11 +1,8 @@
 import React from "react";
 import styles from "../styles/Event.module.css";
 import { EventModel as EventModelI } from "../models/event";
-import { Card } from "react-bootstrap";
+
 import { formateDate } from "../utils/formateDate";
-import { MdDelete } from "react-icons/md";
-import styleUtil from "../styles/utils.module.css";
-import photo from "../Assets/pexels-krivec-ales-552789.jpg";
 
 interface EventProps {
   event: EventModelI;
@@ -20,7 +17,7 @@ function Event({
   onDeleteEventClicked,
   onEventClicked,
 }: EventProps) {
-  const { name, description, createdAt } = event;
+  const { name, createdAt } = event;
 
   return (
     // <Card
