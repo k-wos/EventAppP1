@@ -19,6 +19,7 @@
     height: 50%;
     border-radius: 50%;
     border:1px solid #9747FF;
+    cursor:pointer;
 }
 .userBox{
     display: flex;
@@ -26,6 +27,10 @@
     align-items: center;
     height: 40%;
     justify-content: center;
+}
+.avatarIcon:hover{
+    background-color: #f7f7f7;
+    
 }
 .userName{
     padding: 15px;
