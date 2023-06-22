@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Col, Row } from "react-bootstrap";
+import { Col, Spinner } from "react-bootstrap";
 import { FaPlus } from "react-icons/fa";
 import { AddEditEventDialog } from "../components/AddEditEventDialog";
 import Event from "../components/Event";
@@ -16,17 +16,23 @@ interface EventsPageLoggedProps {
 const EventsPageLoggedInView = ({ showEvent }: EventsPageLoggedProps) => {
   const [events, setEvents] = useState<EventModelI[]>([]);
   const [showAddEventDialog, setShowAddEventDialog] = useState(false);
+  const [eventsLoading, setEventsLoading] = useState(true);
+  const [showEventsLoadingError, setShowEventsLoadingError] = useState(false);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     async function loadEvents() {
       try {
+        setShowEventsLoadingError(false);
+        setEventsLoading(true);
         const events = await EventsApi.fetchEvents();
         setEvents(events);
       } catch (error) {
         console.error(error);
-        alert(error);
+        setShowEventsLoadingError(true);
+      } finally {
+        setEventsLoading(false);
       }
     }
     loadEvents();
@@ -69,6 +75,9 @@ const EventsPageLoggedInView = ({ showEvent }: EventsPageLoggedProps) => {
           <FaPlus />
           Dodaj wydarzenie
         </Col>
+        {eventsLoading && <Spinner animation="border" variant="primary" />}
+        {showEventsLoadingError && <p>Coś poszlo nie tak...Odśwież!</p>}
+        {!eventsLoading && !showEventsLoadingError && <></>}
       </div>
       {showAddEventDialog && (
         <AddEditEventDialog
