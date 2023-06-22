@@ -1,12 +1,12 @@
 .eventCard {
-    border-radius: 16px;
-    margin:14px;
-    box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
-    0px 5px 8px 0px rgba(0, 0, 0, 0.14),
-    0px 1px 14px 0px rgba(0, 0, 0, 0.12);
-    overflow: hidden;
-    background-image: url("../Assets/pexels-krivec-ales-552789.jpg");
-    background-size: cover;
+    position: relative;
+    margin:30px auto;
+    min-width: 300px;
+    cursor:pointer;
+    min-height: 320px;
+    box-shadow: 0 0 100px rgba(0,0,0, .3);
+    border-radius: 15px;
+  
 }
 .eventCard:hover{
     box-shadow: 0 40px 130px rgba(0, 0, 0, 0.6);
@@ -25,4 +25,49 @@
 .eventName{
     text-align: center;
 }
+.cardHeader {
+    background-image: url('../Assets/pexels-pixabay-257092.jpg');
+    position: relative;
+    height: 220px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    
+    
+}
+.card-header:after{
+    content:'';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgb(5,85,134), rgba(181,181,181, 0.1));
+  }
+  .headerEdge{
+    position: absolute;
+    bottom: -3px;
+    z-index: 1;
+    width: 100%;
+    right:0;
+    left:0;
+  }
+  .name{
+    font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0 auto;
+  text-align: center;
+  padding:10px;
+  }
 
+  .description{
+    font-size: 14px;
+  color: black;
+  font-weight: 300;
+  margin: 10px auto;
+  line-height: 20px;
+  padding-left:15px;
+  }
+  .cardFooter{
+    text-align: center;
+  }

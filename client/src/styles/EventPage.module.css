@@ -1,6 +1,4 @@
 .event {
-    height:300px;
-    min-width: 200px;
     
     transition: box-shadow .2s ease-in-out;
     cursor: pointer;
@@ -28,4 +26,7 @@
 
 .events{
     display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    gap:25px;
 }

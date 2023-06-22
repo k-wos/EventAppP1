@@ -5,6 +5,7 @@ import { Card } from "react-bootstrap";
 import { formateDate } from "../utils/formateDate";
 import { MdDelete } from "react-icons/md";
 import styleUtil from "../styles/utils.module.css";
+import photo from "../Assets/pexels-krivec-ales-552789.jpg";
 
 interface EventProps {
   event: EventModelI;
@@ -22,27 +23,41 @@ function Event({
   const { name, description, createdAt } = event;
 
   return (
-    <Card
-      className={`${styles.eventCard} ${className}`}
+    // <Card
+    //   className={`${styles.eventCard} ${className}`}
+    //   onClick={() => onEventClicked(event)}
+    // >
+    //   <Card.Body className={styles.cardBody}>
+
+    //     <Card.Title className={`${styleUtil.textCenter}  `}>
+    //       {name}
+    //       <MdDelete
+    //         className="text-muted ms-auto"
+    //         onClick={(e) => {
+    //           onDeleteEventClicked(event);
+    //           e.stopPropagation();
+    //         }}
+    //       />
+    //     </Card.Title>
+    //     <Card.Text className={styles.cardText}>{description}</Card.Text>
+    //   </Card.Body>
+    //   <Card.Footer className={"text-muted"}>
+    //     {formateDate(createdAt)}
+    //   </Card.Footer>
+    // </Card>
+    <div
+      className={`${styles.eventCard}`}
       onClick={() => onEventClicked(event)}
     >
-      <Card.Body className={styles.cardBody}>
-        <Card.Title className={`${styleUtil.textCenter}  `}>
-          {name}
-          <MdDelete
-            className="text-muted ms-auto"
-            onClick={(e) => {
-              onDeleteEventClicked(event);
-              e.stopPropagation();
-            }}
-          />
-        </Card.Title>
-        <Card.Text className={styles.cardText}>{description}</Card.Text>
-      </Card.Body>
-      <Card.Footer className={"text-muted"}>
-        {formateDate(createdAt)}
-      </Card.Footer>
-    </Card>
+      <div className={styles.cardHeader}></div>
+
+      <div className={styles.cardBody}>
+        <h2 className={styles.name}>{name}</h2>
+      </div>
+      <div className={styles.cardFooter}>
+        Data utworzenia: {formateDate(createdAt)}
+      </div>
+    </div>
   );
 }
 
