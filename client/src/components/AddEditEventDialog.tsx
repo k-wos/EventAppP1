@@ -72,10 +72,6 @@ export const AddEditEventDialog = ({
             <Form.Control type="text" {...register("town")} />
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>Adres</Form.Label>
-            <Form.Control type="text" {...register("address")} />
-          </Form.Group>
-          <Form.Group className="mb-3">
             <Form.Label>Data</Form.Label>
             <Form.Control type="datetime-local" {...register("date")} />
           </Form.Group>
