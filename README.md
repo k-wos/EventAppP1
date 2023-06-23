@@ -1,7 +1,7 @@
 # EventAppP1
 Aplikacja do tworzenia i obsługi wydarzeń
 
-## server
+## Backend
 Przed uruchomieniem:
 ```
 cd .\server\
@@ -16,7 +16,7 @@ npm start
 ```
 Działa na porcie 5000
 
-## client
+## Frontennd
 Przed uruchomieniem:
 ```
 cd .\client\
