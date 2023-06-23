@@ -1,10 +1,12 @@
 # EventAppP1
 Aplikacja do tworzenia i obsługi wydarzeń
 
-##server
+## server
 Przed uruchomieniem:
 ```
 cd .\server\
+```
+```
 npm install
 ```
 
@@ -14,10 +16,12 @@ npm start
 ```
 Działa na porcie 5000
 
-##client
+## client
 Przed uruchomieniem:
 ```
 cd .\client\
+```
+```
 npm install
 ```
 
