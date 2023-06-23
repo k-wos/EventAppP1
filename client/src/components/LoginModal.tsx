@@ -9,9 +9,13 @@ import { Button } from "react-bootstrap";
 
 interface LoginModalProps {
   onLoginSuccessful: (user: User) => void;
+  onSignUpClicked: () => void;
 }
 
-const LoginModal = ({ onLoginSuccessful }: LoginModalProps) => {
+const LoginModal = ({
+  onLoginSuccessful,
+  onSignUpClicked,
+}: LoginModalProps) => {
   const {
     register,
     handleSubmit,
@@ -59,6 +63,9 @@ const LoginModal = ({ onLoginSuccessful }: LoginModalProps) => {
       >
         Zaloguj się
       </Button>
+      <span onClick={onSignUpClicked} className={userStyles.toSignUp}>
+        Nie posiadasz konta? Zarejestruj się!
+      </span>
     </form>
   );
 };

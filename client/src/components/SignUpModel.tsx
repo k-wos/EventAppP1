@@ -69,9 +69,7 @@ const SignUpModel = ({
         registerOptions={{ required: "Wymagane" }}
         error={errors.pasword}
       ></TextInputField>
-      <p onClick={onSignInClicked} className={userStyles.toLogin}>
-        Posiadasz już konto? Zaloguj się
-      </p>
+
       <Button
         type="submit"
         disabled={isSubmitting}
@@ -79,6 +77,9 @@ const SignUpModel = ({
       >
         Załóż konto
       </Button>
+      <span onClick={onSignInClicked} className={userStyles.toLogin}>
+        Posiadasz już konto? Zaloguj się
+      </span>
     </form>
   );
 };

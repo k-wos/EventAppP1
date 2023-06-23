@@ -11,6 +11,9 @@ const LoginPage = () => {
         onLoginSuccessful={() => {
           navigate("/events");
         }}
+        onSignUpClicked={() => {
+          navigate("/");
+        }}
       />
       ;
     </main>

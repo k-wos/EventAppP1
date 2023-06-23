@@ -8,7 +8,9 @@ function HomePage() {
   return (
     <main className={homeStyles.mainContainer}>
       <SignUpModel
-        onSignUpSuccessful={() => {}}
+        onSignUpSuccessful={() => {
+          navigate("/events");
+        }}
         onSignInClicked={() => {
           navigate("/login");
         }}
